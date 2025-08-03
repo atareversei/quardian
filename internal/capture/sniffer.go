@@ -7,7 +7,7 @@ import (
 
 	"github.com/atareversei/ids/pkg/cli"
 	"github.com/google/gopacket"
-	_ "github.com/google/gopacket/layers"
+	"github.com/google/gopacket/layers"
 	"github.com/google/gopacket/pcap"
 )
 
@@ -43,6 +43,10 @@ func (s *Sniffer) Start() {
 
 	for packet := range packetSource.Packets() {
 		// TODO: Print TCP packet info.
-		fmt.Println(packet)
+		if tcpLayer := packet.Layer(layers.LayerTypeTCP); tcpLayer != nil {
+			tcp, _ := tcpLayer.(*layers.TCP)
+
+			fmt.Printf("Next Layer Type: %s\n", tcp.NextLayerType())
+		}
 	}
 }
