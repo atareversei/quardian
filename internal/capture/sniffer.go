@@ -5,7 +5,6 @@ import (
 	"log"
 	"time"
 
-	"github.com/atareversei/ids/pkg/cli"
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
 	"github.com/google/gopacket/pcap"
@@ -39,14 +38,22 @@ func (s *Sniffer) Start() {
 	defer s.handle.Close()
 
 	packetSource := gopacket.NewPacketSource(s.handle, s.handle.LinkType())
-	cli.Info(fmt.Sprintf("Starting packet capture on device %s...\n", s.device))
+	fmt.Printf("Starting packet capture on device %s...\n", s.device)
 
 	for packet := range packetSource.Packets() {
-		// TODO: Print TCP packet info.
-		if tcpLayer := packet.Layer(layers.LayerTypeTCP); tcpLayer != nil {
-			tcp, _ := tcpLayer.(*layers.TCP)
-
-			fmt.Printf("Next Layer Type: %s\n", tcp.NextLayerType())
+		ipLayer := packet.Layer(layers.LayerTypeIPv4)
+		if ipLayer == nil {
+			continue
 		}
+		ip, _ := ipLayer.(*layers.IPv4)
+
+		tcpLayer := packet.Layer(layers.LayerTypeTCP)
+		if tcpLayer == nil {
+			continue
+		}
+		tcp, _ := tcpLayer.(*layers.TCP)
+
+		fmt.Printf("TCP Packet: %s:%s -> %s:%s\n",
+			ip.SrcIP, tcp.SrcPort, ip.DstIP, tcp.DstPort)
 	}
 }
