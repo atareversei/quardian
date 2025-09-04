@@ -1,10 +1,9 @@
-name: Deploy Docs to GitHub Pages
+name: Deploy Docusaurus to GitHub Pages
 
 on:
   push:
     branches:
       - docs
-
 
 jobs:
   deploy:
@@ -26,16 +25,16 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'pnpm'
-          cache-dependency-path: 'docs/pnpm-lock.yaml'
+          node-version: "20"
+
+          cache: "yarn"
+          cache-dependency-path: "docs/yarn.lock"
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: yarn install --frozen-lockfile
 
       - name: Build website
-        run: pnpm build
-
+        run: yarn build
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
