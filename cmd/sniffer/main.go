@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"github.com/google/gopacket/layers"
 	"log"
 	"os"
 	"strconv"
@@ -46,6 +47,9 @@ func main() {
 	}
 
 	fmt.Printf("trying to open the device: %q\n", dev)
-	c := capture.New(dev)
+	dispatcher := capture.NewDispatcher()
+	dispatcher.Register(layers.LayerTypeUDP, &capture.UDPHandler{})
+	dispatcher.Register(layers.LayerTypeTCP, &capture.TCPHandler{})
+	c := capture.New(dev, dispatcher)
 	c.Start()
 }

@@ -6,7 +6,6 @@ import (
 	"time"
 
 	"github.com/google/gopacket"
-	"github.com/google/gopacket/layers"
 	"github.com/google/gopacket/pcap"
 )
 
@@ -17,14 +16,16 @@ type Sniffer struct {
 	promiscuous bool
 	timeout     time.Duration
 	handle      *pcap.Handle
+	dispatcher  *Dispatcher
 }
 
-func New(device string) *Sniffer {
+func New(device string, dispatcher *Dispatcher) *Sniffer {
 	return &Sniffer{
 		device:      device,
-		snapshotLen: 1024,
-		promiscuous: false,
-		timeout:     30 * time.Second,
+		snapshotLen: 65535,
+		promiscuous: true,
+		timeout:     1 * time.Second,
+		dispatcher:  dispatcher,
 	}
 }
 
@@ -41,19 +42,6 @@ func (s *Sniffer) Start() {
 	fmt.Printf("Starting packet capture on device %s...\n", s.device)
 
 	for packet := range packetSource.Packets() {
-		ipLayer := packet.Layer(layers.LayerTypeIPv4)
-		if ipLayer == nil {
-			continue
-		}
-		ip, _ := ipLayer.(*layers.IPv4)
-
-		tcpLayer := packet.Layer(layers.LayerTypeTCP)
-		if tcpLayer == nil {
-			continue
-		}
-		tcp, _ := tcpLayer.(*layers.TCP)
-
-		fmt.Printf("TCP Packet: %s:%s -> %s:%s\n",
-			ip.SrcIP, tcp.SrcPort, ip.DstIP, tcp.DstPort)
+		s.dispatcher.Dispatch(packet)
 	}
 }
