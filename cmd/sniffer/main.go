@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/atareversei/ids/internal/capture"
+	"github.com/atareversei/quardian/internal/capture"
 	"github.com/google/gopacket/pcap"
 )
 

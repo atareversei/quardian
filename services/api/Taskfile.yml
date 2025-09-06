@@ -1,0 +1,31 @@
+version: "3"
+
+includes:
+  git-hooks: ./cmd/hooks
+
+tasks:
+  dev:
+    cmds:
+      - docker-compose --env-file .env.dev up -d quardian_pg
+      - air
+
+  test:
+    cmd: go test -v ./...
+
+  test:cover:
+    cmds:
+      - go test -v ./... -coverprofile=prof.out
+      - go tool cover -html=prof.out
+
+  setup:
+    cmds:
+      - task: setup-air
+      - task: git-hooks:setup-git-hooks
+
+  setup-air:
+    internal: true
+    cmd: go install github.com/air-verse/air@v1.61.5
+
+  cloc:
+    cmds:
+      - cloc '.\\cmd' '.\\internal' '.\\pkg'

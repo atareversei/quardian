@@ -1,0 +1,23 @@
+meta {
+  name: Edit Profile Partially
+  type: http
+  seq: 2
+}
+
+patch {
+  url: {{base}}/users/profile
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "first_name": "ata",
+    "email": "email_changed@mail.com",
+    "mobile": "09142456585"
+  }
+}
+
+settings {
+  encodeUrl: true
+}
