@@ -1,0 +1,16 @@
+auth {
+  mode: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTQ3NDg1OTMsImlhdCI6MTc1MzUzODk5MywiaXNzIjoiYXBpLmVuaXFtYSIsInVzZXJfaWQiOjExfQ.VFKupnhWOTxLpECnOYwFJjFzJB1LIvfCaidYznKCvkM
+}
+
+vars:pre-request {
+  domain_local: localhost:15340
+  domain: {{domain_local}}
+  api_prefix: api
+  api_version: v1
+  base: {{protocol}}{{domain}}/{{api_prefix}}/{{api_version}}
+  protocol: http://
+}

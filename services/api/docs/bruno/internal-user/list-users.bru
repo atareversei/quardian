@@ -1,0 +1,17 @@
+meta {
+  name: list-users
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{base}}/internal/users?page=1&page_size=10
+  body: none
+  auth: inherit
+}
+
+params:query {
+  page: 1
+  page_size: 10
+  ~status: 
+}

@@ -1,0 +1,10 @@
+{
+  "welcome": "You are very welcome.",
+  "bad_request": "Bad request.",
+  "empty_patch_request": "Empty request.",
+  "user_not_active": "Your status is not active.",
+  "invalid_input": "Invalid input.",
+  "internal_server": "Internal server error.",
+  "user_not_found": "No user matching the provided username and password was found.",
+  "username_already_exists": "Username already exists."
+}

@@ -1,0 +1,38 @@
+version: "3.7"
+
+services:
+  quardian:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: quardian
+    ports:
+      - "${APP_HTTP_PORT:-15340}:15340"
+    volumes:
+      - ./logs:/app/logs
+    environment:
+      - APP_POSTGRES_USER=${APP_POSTGRES_USER}
+      - APP_POSTGRES_PASSWORD=${APP_POSTGRES_PASSWORD}
+      - APP_POSTGRES_HOST=quardian_pg
+      - APP_POSTGRES_PORT=5432
+      - APP_POSTGRES_DB=${APP_POSTGRES_DB}
+      - APP_ENV=${APP_ENV:-dev}
+    depends_on:
+      - quardian_pg
+    restart: unless-stopped
+
+  quardian_pg:
+    image: postgres:16.4
+    container_name: quardian_pg
+    ports:
+      - "${APP_POSTGRES_PORT}:5432"
+    volumes:
+      - quardian_pg_data:/var/lib/postgresql/data/
+    restart: always
+    environment:
+      - POSTGRES_USER=${APP_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${APP_POSTGRES_PASSWORD}
+      - POSTGRES_DB=${APP_POSTGRES_DB}
+
+volumes:
+  quardian_pg_data:
