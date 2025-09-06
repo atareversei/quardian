@@ -20,6 +20,8 @@ func findProjectRoot() {
 		}
 		dir = parent
 	}
+
+	projectRoot += "/services/api"
 }
 
 func GetProjectRoot() string {

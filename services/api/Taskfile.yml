@@ -1,13 +1,11 @@
 version: "3"
 
 includes:
-  docs: ./docs
   git-hooks: ./cmd/hooks
 
 tasks:
   dev:
     cmds:
-      - task: docs:generate
       - docker-compose --env-file .env.dev up -d quardian_pg
       - air
 
@@ -23,7 +21,6 @@ tasks:
     cmds:
       - task: setup-air
       - task: git-hooks:setup-git-hooks
-      - task: docs:setup-swag
 
   setup-air:
     internal: true

@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"path/filepath"
 	"time"
 
@@ -14,6 +15,7 @@ import (
 // TODO: turn environment into a type
 func Load(environment string) Config {
 	yamlCfgPath := filepath.Join(project.GetProjectRoot(), "config.yml")
+	fmt.Println("path: ", yamlCfgPath)
 
 	cfg := Config{
 		Env: environment,
@@ -37,7 +39,7 @@ func Load(environment string) Config {
 		dotenvFileName = ".env.dev"
 	}
 
-	dotenv := NewEnv(EnvPrefix, dotenvFileName)
+	dotenv := NewEnv(EnvPrefix, filepath.Join(project.GetProjectRoot(), dotenvFileName))
 	dotenv.Load()
 	err = k.Load(confmap.Provider(map[string]any{
 		"repository.postgres.username":    dotenv.Get("POSTGRES_USER"),

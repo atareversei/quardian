@@ -1,14 +1,4 @@
-//	@title			Quardian API
-//	@version		1.0
-//	@description	Quardian services
-
-//	@host		localhost:15340
-//	@BasePath	/api/v1
-
-// @securityDefinitions.apikey	BearerAuth
-// @in							header
-// @name						Authorization
-package main
+package serviceapi
 
 import (
 	"flag"
@@ -37,7 +27,7 @@ import (
 	"github.com/atareversei/quardian/services/api/pkg/translation"
 )
 
-func main() {
+func Main() {
 	env := flag.String("env", "dev", "specify env - `dev|test|prod`")
 	flag.Parse()
 
