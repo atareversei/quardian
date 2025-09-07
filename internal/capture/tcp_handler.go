@@ -1,7 +1,7 @@
 package capture
 
 import (
-	"fmt"
+	"github.com/atareversei/quardian/internal/models"
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
 )
@@ -10,18 +10,18 @@ import (
 
 type TCPHandler struct{}
 
-func (h *TCPHandler) Handle(packet gopacket.Packet) {
-	ipLayer := packet.Layer(layers.LayerTypeIPv4)
+func (h *TCPHandler) Handle(pkt *models.Packet, raw gopacket.Packet) {
+	ipLayer := raw.Layer(layers.LayerTypeIPv4)
 	if ipLayer == nil {
 		return
 	}
 
-	ip, ok := ipLayer.(*layers.IPv4)
+	_, ok := ipLayer.(*layers.IPv4)
 	if !ok {
 		return
 	}
 
-	tcpLayer := packet.Layer(layers.LayerTypeTCP)
+	tcpLayer := raw.Layer(layers.LayerTypeTCP)
 	if tcpLayer == nil {
 		return
 	}
@@ -31,6 +31,9 @@ func (h *TCPHandler) Handle(packet gopacket.Packet) {
 		return
 	}
 
-	fmt.Printf("TCP Packet: %s:%s -> %s:%s\n",
-		ip.SrcIP, tcp.SrcPort, ip.DstIP, tcp.DstPort)
+	pkt.Transport = models.TransportInfo{
+		SrcPort:  uint16(tcp.SrcPort),
+		DstPort:  uint16(tcp.DstPort),
+		Protocol: "tcp",
+	}
 }

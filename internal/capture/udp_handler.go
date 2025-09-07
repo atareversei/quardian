@@ -1,25 +1,25 @@
 package capture
 
 import (
-	"fmt"
+	"github.com/atareversei/quardian/internal/models"
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
 )
 
 type UDPHandler struct{}
 
-func (h *UDPHandler) Handle(packet gopacket.Packet) {
-	ipLayer := packet.Layer(layers.LayerTypeIPv4)
+func (h *UDPHandler) Handle(pkt *models.Packet, raw gopacket.Packet) {
+	ipLayer := raw.Layer(layers.LayerTypeIPv4)
 	if ipLayer == nil {
 		return
 	}
 
-	ip, ok := ipLayer.(*layers.IPv4)
+	_, ok := ipLayer.(*layers.IPv4)
 	if !ok {
 		return
 	}
 
-	udpLayer := packet.Layer(layers.LayerTypeUDP)
+	udpLayer := raw.Layer(layers.LayerTypeUDP)
 	if udpLayer == nil {
 		return
 	}
@@ -29,6 +29,9 @@ func (h *UDPHandler) Handle(packet gopacket.Packet) {
 		return
 	}
 
-	fmt.Printf("UDP Datagram: %s:%s -> %s:%s\n",
-		ip.SrcIP, udp.SrcPort, ip.DstIP, udp.DstPort)
+	pkt.Transport = models.TransportInfo{
+		SrcPort:  uint16(udp.SrcPort),
+		DstPort:  uint16(udp.DstPort),
+		Protocol: "udp",
+	}
 }

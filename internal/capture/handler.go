@@ -1,7 +1,10 @@
 package capture
 
-import "github.com/google/gopacket"
+import (
+	"github.com/atareversei/quardian/internal/models"
+	"github.com/google/gopacket"
+)
 
 type PacketHandler interface {
-	Handle(packet gopacket.Packet)
+	Handle(pkt *models.Packet, raw gopacket.Packet)
 }
