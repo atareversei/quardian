@@ -2,6 +2,9 @@ package serviceapi
 
 import (
 	"flag"
+	"github.com/atareversei/quardian/services/api/internal/delivery/httpserver/handlers/confighandler"
+	"github.com/atareversei/quardian/services/api/internal/service/configservice"
+	"github.com/atareversei/quardian/services/api/internal/validator/configvalidator"
 
 	"github.com/atareversei/quardian/services/api/internal/delivery/httpserver/authhandler"
 	"github.com/atareversei/quardian/services/api/internal/delivery/httpserver/internaluserhandler"
@@ -44,21 +47,25 @@ func Main() {
 	authutil.Init(authRepo)
 
 	authSvc := authservice.New(authRepo)
+	confSvc := configservice.New()
 	userSvc := userservice.New(userRepo)
 	internalUserSvc := internaluserservice.New(internalUserRepo)
 
 	mainValidator := validator.New()
 	authValidator := authvalidator.New(mainValidator)
 	userValidator := uservalidator.New(mainValidator)
+	confValidator := configvalidator.New(mainValidator)
 	internalUserValidator := internaluservalidator.New(mainValidator)
 
 	authHandler := authhandler.New(authValidator, authSvc)
 	userHandler := userhandler.New(userValidator, userSvc)
+	confHandler := confighandler.New(confValidator, confSvc)
 	internalUserHandler := internaluserhandler.New(internalUserValidator, internalUserSvc)
 
 	server := httpserver.New(httpserver.Args{
 		AuthHandler:         *authHandler,
 		UserHandler:         *userHandler,
+		ConfHandler:         confHandler,
 		InternalUserHandler: *internalUserHandler,
 		Config:              cfg,
 	})

@@ -45,7 +45,7 @@ func (s *Service) ListDevices(ctx context.Context, req configdto.ListDevicesRequ
 		dev := configdto.ListDevicesResponseItem{
 			Name:        d.Name,
 			Description: d.Description,
-			IP:          d.Addresses[0].IP,
+			IP:          nil,
 			Status:      "Active",
 		}
 

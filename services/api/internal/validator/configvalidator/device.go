@@ -16,7 +16,7 @@ func (v *Validator) ListDevices(ctx context.Context, req configdto.ListDevicesRe
 	const op = "configvalidator.ListDevices"
 	lang := contextutil.GetLanguage(ctx)
 
-	if err := validation.ValidateStruct(req,
+	if err := validation.ValidateStruct(&req,
 		validation.Field(&req.Page,
 			validator.RequiredRule(lang, "fields.page"),
 			validator.MinRule(lang, "fields.page", minPage),

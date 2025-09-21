@@ -17,15 +17,13 @@ func (h Handler) listDevices(c echo.Context) error {
 		Page:    1,
 		PerPage: 20,
 	}
-
-	req := configdto.ListDevicesRequest{DeviceFilters: df}
-
 	if page, err := strconv.Atoi(c.QueryParam(queryparam.Page)); err == nil {
 		df.Page = page
 	}
 	if perPage, err := strconv.Atoi(c.QueryParam(queryparam.PerPage)); err == nil {
 		df.PerPage = perPage
 	}
+	req := configdto.ListDevicesRequest{DeviceFilters: df}
 
 	validationErrors, err := h.Validator.ListDevices(ctx, req)
 	if err != nil {

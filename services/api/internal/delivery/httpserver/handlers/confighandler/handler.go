@@ -11,10 +11,10 @@ type Handler struct {
 	Validator configvalidator.Validator
 }
 
-func New(service configservice.Service, validator configvalidator.Validator) Handler {
+func New(validator configvalidator.Validator, service configservice.Service) Handler {
 	return Handler{
-		Service:   service,
 		Validator: validator,
+		Service:   service,
 	}
 }
 
