@@ -1,0 +1,16 @@
+export const LanguageFaMain = {
+  expandSidebar: 'باز کردن منو',
+  shrinkSidebar: 'بستن منو',
+  summarySidebar: 'خلاصه فعالیت‌ها',
+  orderSidebar: 'سفارش‌ها',
+  favoriteSidebar: 'علاقه‌مندی‌ها',
+  commentSidebar: 'نظرات',
+  notificationSidebar: 'اعلانات',
+  profileSidebar: 'اطلاعات حساب کاربری',
+  addressSidebar: 'آدرس‌ها',
+  historySidebar: 'بازدیدهای اخیر',
+  ticketSidebar: 'پشتیبانی',
+  logoutSidebar: 'خروج از حساب کاربری',
+  expectedSidebar: 'به زودی!',
+  newSidebar: 'جدید!',
+};

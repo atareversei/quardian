@@ -1,0 +1,32 @@
+.container {
+  container-type: inline-size;
+}
+
+.padding {
+  padding-inline: 12px;
+  padding-block: 8px;
+}
+
+.center {
+  --dashboard-sidebar-shrunken-inline-size: 70px;
+  --dashboard-sidebar-expanded-inline-size: 300px;
+  --dashboard-sidebar-inline-size: var(--dashboard-sidebar-shrunken-inline-size);
+
+  max-inline-size: 1200px;
+  margin-inline: auto;
+
+  display: grid;
+  grid-template-columns: var(--dashboard-sidebar-inline-size) 1fr;
+  transition: var(--animation-duration-md) ease-in-out;
+  gap: 24px;
+
+  &[data-expanded="true"] {
+    --dashboard-sidebar-inline-size: var(--dashboard-sidebar-expanded-inline-size);
+  }
+}
+
+.content {
+  border: 1px solid var(--border-color);
+  border-radius: var(--mantine-radius-md);
+  padding: 6px 18px;
+}

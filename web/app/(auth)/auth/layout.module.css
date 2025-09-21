@@ -1,0 +1,91 @@
+@property --auth-gradient-color-from {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}
+
+@property --auth-gradient-color-to {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}
+
+.bg {
+  --auth-layout-bg-block-size: 100dvh;
+  --auth-layout-bg-padding: 32px;
+
+  --auth-gradient-color-from: var(--gradient-primary-from);
+  --auth-gradient-color-to: var(--gradient-primary-to);
+
+  --auth-bg-transition-property: --auth-gradient-color-from, --auth-gradient-color-to, /* stylelint-disable-line custom-property-no-missing-var-function */
+    --auth-gradient-color-variant-from, --auth-gradient-color-variant-to;
+
+  --auth-gradient-bg: linear-gradient(
+    to top right,
+    var(--auth-gradient-color-from),
+    var(--auth-gradient-color-to)
+  );
+  --auth-gradient-bg-reverse: linear-gradient(
+    to bottom left,
+    var(--auth-gradient-color-from),
+    var(--auth-gradient-color-to)
+  );
+
+  block-size: var(--auth-layout-bg-block-size);
+  padding: var(--auth-layout-bg-padding);
+
+  display: grid;
+  place-items: center;
+
+  position: relative;
+  z-index: 5;
+
+  transition-property: var(--auth-bg-transition-property);
+  transition-duration: var(--animation-duration-sm);
+  transition-timing-function: ease-in;
+}
+
+.bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+
+  background-image: var(--auth-gradient-bg);
+}
+
+.bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background-image: url("../../../assets/patterns/shopping.webp");
+  background-size: contain;
+  background-repeat: repeat;
+  mix-blend-mode: color-burn;
+  opacity: 0.12;
+}
+
+.page {
+  --auth-layout-page-max-block-size: auto;
+
+  min-block-size: 500px;
+  max-block-size: var(--auth-layout-page-max-block-size);
+
+  background-color: var(--card-color);
+  box-shadow: var(--mantine-shadow-md);
+
+  display: grid;
+  place-items: center;
+  grid-template-rows: var(--auth-layout-page-max-block-size);
+
+  border-radius: var(--mantine-radius-lg);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 4fr 3fr;
+  block-size: 100%;
+  padding: 12px;
+}

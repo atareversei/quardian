@@ -1,0 +1,14 @@
+.container {
+  container-type: inline-size;
+}
+
+.aside {
+  block-size: 90dvh;
+  background-image: var(--gradient-primary);
+  border-radius: var(--mantine-radius-md);
+  padding: 12px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

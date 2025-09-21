@@ -1,0 +1,7 @@
+:root {
+  --animation-duration-xs: 50ms;
+  --animation-duration-sm: 100ms;
+  --animation-duration-md: 150ms;
+  --animation-duration-lg: 250ms;
+  --animation-duration-xl: 450ms;
+}

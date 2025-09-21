@@ -1,0 +1,20 @@
+@font-face {
+  font-family: Pelak;
+  src: url('../../assets/fonts/pelak/PelakFA-Regular.woff2') format('woff2');
+  font-display: swap;
+  font-weight: 100 550;
+}
+
+@font-face {
+  font-family: Pelak;
+  src: url('../../assets/fonts/pelak/PelakFA-Bold.woff2') format('woff2');
+  font-display: swap;
+  font-weight: 550 750;
+}
+
+@font-face {
+  font-family: Pelak;
+  src: url('../../assets/fonts/pelak/PelakFA-Black.woff2') format('woff2');
+  font-display: swap;
+  font-weight: 750 950;
+}

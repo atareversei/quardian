@@ -1,0 +1,48 @@
+.public-content {
+  padding-block: 4rem;
+  padding-inline: 1rem;
+}
+
+.take-all-screen {
+  block-size: 100dvh;
+  inline-size: 100dvw;
+  padding: 16px;
+  display: grid;
+  place-items: center;
+}
+
+.take-all-screen .error-box {
+  max-inline-size: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+}
+
+.error-box .error-box_image {
+  margin: 0;
+}
+
+.error-box .error-box_image img {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+.error-box .error-box_content {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.error-box .error-box_actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 12px;
+}
+
+.error-box_actions.end {
+  justify-content: flex-end;
+}

@@ -1,0 +1,15 @@
+.text {
+  transition: color var(--animation-duration-md) ease-in;
+}
+
+.iconBox {
+  display: grid;
+  grid-template-columns: 1;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
