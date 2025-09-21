@@ -30,7 +30,7 @@ export const SidebarButton = React.forwardRef<HTMLButtonElement, Props>(
         <div className={c.iconContainer}>{i(icon, 'xl', 'white')}</div>
         {sidebarState.isExpanded && (
           <div className={c.content}>
-            <Text c="white" className={c.text} lh={1} fw={700} size="sm">
+            <Text c="white" className={c.text} lh={1} fw={500} size="sm">
               {text}
             </Text>
 

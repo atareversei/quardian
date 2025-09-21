@@ -17,60 +17,45 @@ export function useSidebar() {
   const sidebarData: SidebarDataItem[] = [
     {
       icon: 'home',
-      text: l.dash.main.summarySidebar,
+      text: l.dash.main.dashboardSidebar,
+    },
+    {
+      icon: 'activityHeartbeat',
+      text: l.dash.main.liveTrafficSidebar,
+      sectionType: 'notification',
     },
     {
       icon: 'package',
-      text: l.dash.main.orderSidebar,
-      sectionType: 'notification',
-      leftSection: (
-        <Badge color="dark" circle>
-          12
-        </Badge>
-      ),
-      onlyDev: true,
+      text: l.dash.main.flowsSidebar,
     },
     {
-      icon: 'basketHeart',
-      text: l.dash.main.favoriteSidebar,
-      onlyDev: true,
-    },
-    {
-      icon: 'messageCircle',
-      text: l.dash.main.commentSidebar,
-      sectionType: 'expected',
-      leftSection: <Badge color="yellow">{l.dash.main.expectedSidebar}</Badge>,
-      onlyDev: true,
-    },
-    {
-      icon: 'mapPins',
-      text: l.dash.main.addressSidebar,
-      onlyDev: true,
-    },
-    {
-      icon: 'history',
-      text: l.dash.main.historySidebar,
-      onlyDev: true,
-    },
-    {
-      icon: 'bell',
-      text: l.dash.main.notificationSidebar,
+      icon: 'alertHexagon',
+      text: l.dash.main.alertsSidebar,
       sectionType: 'notification',
       leftSection: (
         <Badge color="dark" circle>
           5
         </Badge>
       ),
-      onlyDev: true,
     },
     {
-      icon: 'ticket',
-      text: l.dash.main.ticketSidebar,
+      icon: 'flag',
+      text: l.dash.main.captureFiltersSidebar,
+      sectionType: 'expected',
+      leftSection: <Badge color="yellow">{l.dash.main.expectedSidebar}</Badge>,
+    },
+    {
+      icon: 'history',
+      text: l.dash.main.historicalDataSidebar,
+    },
+    {
+      icon: 'eyeCog',
+      text: l.dash.main.machineLearningSidebar,
+    },
+    {
+      icon: 'settings',
+      text: l.dash.main.settingsSidebar,
       bottomStart: true,
-    },
-    {
-      icon: 'user',
-      text: l.dash.main.profileSidebar,
     },
     {
       icon: 'doorExit',
@@ -80,3 +65,4 @@ export function useSidebar() {
 
   return { sidebarData };
 }
+

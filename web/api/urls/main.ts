@@ -7,11 +7,8 @@ export const MainURLs = {
 
   profile_me: '/user/profile/me',
 
-  tickets_list: '/user/tickets',
-  tickets_store: '/user/tickets',
-  tickets_get: '/user/tickets/{ticket_id}',
-  ticket_messages_list: '/user/tickets/{ticket_id}/messages',
-  ticket_messages_store: '/user/tickets/{ticket_id}/messages',
+  devices_list: '/user/tickets',
 };
 
 export type MainURLs = keyof typeof MainURLs;
+

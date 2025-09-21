@@ -18,10 +18,10 @@ export const SidebarExpandButton = React.forwardRef<HTMLButtonElement, any>((pro
       }}
     >
       <div data-expanded={sidebarState.isExpanded} className={c.iconContainer}>
-        {i('chevronLeft', 'xl', 'white')}
+        {i('chevronRight', 'xl', 'white')}
       </div>
       {sidebarState.isExpanded && (
-        <Text c="white" className={c.text} lh={1} fw={700} size="sm">
+        <Text c="white" className={c.text} lh={1} fw={500} size="sm">
           {l.dash.main.shrinkSidebar}
         </Text>
       )}
@@ -43,3 +43,4 @@ export function SidebarExpandButtonWithTooltip() {
     </Tooltip>
   );
 }
+

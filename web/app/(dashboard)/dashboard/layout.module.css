@@ -3,8 +3,8 @@
 }
 
 .padding {
-  padding-inline: 12px;
-  padding-block: 8px;
+  block-size: 100dvh;
+  padding: 24px;
 }
 
 .center {
@@ -12,15 +12,15 @@
   --dashboard-sidebar-expanded-inline-size: 300px;
   --dashboard-sidebar-inline-size: var(--dashboard-sidebar-shrunken-inline-size);
 
-  max-inline-size: 1200px;
-  margin-inline: auto;
+  max-inline-size: 100%;
+  block-size: 100%;
 
   display: grid;
   grid-template-columns: var(--dashboard-sidebar-inline-size) 1fr;
   transition: var(--animation-duration-md) ease-in-out;
   gap: 24px;
 
-  &[data-expanded="true"] {
+  &[data-expanded='true'] {
     --dashboard-sidebar-inline-size: var(--dashboard-sidebar-expanded-inline-size);
   }
 }
@@ -28,5 +28,6 @@
 .content {
   border: 1px solid var(--border-color);
   border-radius: var(--mantine-radius-md);
-  padding: 6px 18px;
+  padding: 18px;
 }
+

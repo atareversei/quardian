@@ -1,4 +1,6 @@
 import {
+  IconActivityHeartbeat,
+  IconAlertHexagon,
   IconArrowDown,
   IconArrowLeft,
   IconArrowRight,
@@ -15,6 +17,8 @@ import {
   IconChevronRight,
   IconChevronUp,
   IconDoorExit,
+  IconEyeCog,
+  IconFlag,
   IconHistory,
   IconHome,
   IconMapPins,
@@ -22,6 +26,7 @@ import {
   IconMoon,
   IconPackage,
   IconPointFilled,
+  IconSettings,
   IconSun,
   IconTicket,
   IconUser,
@@ -30,6 +35,8 @@ import {
 import { MantineColor, MantineSize } from '@mantine/core';
 
 const icons = {
+  activityHeartbeat: IconActivityHeartbeat,
+  alertHexagon: IconAlertHexagon,
   arrowDown: IconArrowDown,
   arrowLeft: IconArrowLeft,
   arrowRight: IconArrowRight,
@@ -46,6 +53,8 @@ const icons = {
   chevronRight: IconChevronRight,
   chevronUp: IconChevronUp,
   doorExit: IconDoorExit,
+  eyeCog: IconEyeCog,
+  flag: IconFlag,
   history: IconHistory,
   home: IconHome,
   mapPins: IconMapPins,
@@ -53,6 +62,7 @@ const icons = {
   moon: IconMoon,
   package: IconPackage,
   pointFilled: IconPointFilled,
+  settings: IconSettings,
   sun: IconSun,
   ticket: IconTicket,
   user: IconUser,
@@ -77,3 +87,4 @@ export function i(
   const Icon = icons[icon];
   return <Icon size={IconSize[size]} color={color} />;
 }
+

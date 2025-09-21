@@ -63,6 +63,7 @@
 .iconContainer {
   position: relative;
   z-index: 2;
+  block-size: 100%;
 
   display: grid;
   place-items: center;

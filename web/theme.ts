@@ -17,8 +17,8 @@ const vitaliBlue: MantineColorsTuple = [
 ];
 
 export const theme = createTheme({
-  fontFamily: 'Pelak, Vazirmatn, sans-serif',
-  headings: { fontFamily: 'Pelak, Vazirmatn, sans-serif' },
+  fontFamily: '"IBM Plex Sans Arabic", sans-serif',
+  headings: { fontFamily: '"IBM Plex Sans Arabic", sans-serif' },
   colors: {
     vitaliBlue,
     primary: virtualColor({
@@ -40,3 +40,4 @@ export const theme = createTheme({
   radius: { xs: '0.175rem', sm: '0.3rem', md: '0.6rem', lg: '1.2rem', xl: '2.4rem' },
   defaultRadius: 'md',
 });
+
