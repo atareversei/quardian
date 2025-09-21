@@ -5,5 +5,7 @@
   "validation.invalid_format": "{{.Field}} فرمت صحیحی ندارد.",
   "validation.min_length": "{{.Field}} باید حداقل {{.MinLength}} کاراکتر داشته باشد.",
   "validation.max_length": "{{.Field}} باید حداکثر {{.MaxLength}} کاراکتر داشته باشد.",
-  "validation.invalid_password_format": "رمز عبور باید یک رشتۀ انگلیسی شامل حداقل یک عدد و یک حرف باشد."
+  "validation.invalid_password_format": "رمز عبور باید یک رشتۀ انگلیسی شامل حداقل یک عدد و یک حرف باشد.",
+  "validation.smaller_than_min": "{{.Field}} باید بزرگتر از {{.Min}} باشد.",
+  "validation.greater_than_max": "{{.Field}} باید کوچکتر از {{.Max}} باشد."
 }

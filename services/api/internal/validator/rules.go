@@ -27,3 +27,17 @@ func FormatRule(lang string, field string, regex string) validation.Rule {
 		"Field": translation.T(lang, field),
 	}))
 }
+
+func MinRule(lang string, field string, min int) validation.Rule {
+	return validation.Min(min).Error(translation.TD(lang, "validation.smaller_than_min", map[string]any{
+		"Field": translation.T(lang, field),
+		"Min":   min,
+	}))
+}
+
+func MaxRule(lang string, field string, max int) validation.Rule {
+	return validation.Max(max).Error(translation.TD(lang, "validation.greater_than_max", map[string]any{
+		"Field": translation.T(lang, field),
+		"Max":   max,
+	}))
+}

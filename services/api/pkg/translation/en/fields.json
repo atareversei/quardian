@@ -1,5 +1,7 @@
 {
   "fields.username": "Username",
   "fields.password": "Password",
-  "fields.email": "Email"
+  "fields.email": "Email",
+  "fields.page": "Page",
+  "fields.per_page": "Per Page"
 }
