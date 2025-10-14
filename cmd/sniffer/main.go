@@ -48,8 +48,11 @@ func main() {
 
 	fmt.Printf("trying to open the device: %q\n", dev)
 	dispatcher := capture.NewDispatcher()
+	dispatcher.Register(layers.LayerTypeEthernet, &capture.EthernetHandler{})
+	dispatcher.Register(layers.LayerTypeIPv4, &capture.IPHandler{})
 	dispatcher.Register(layers.LayerTypeUDP, &capture.UDPHandler{})
 	dispatcher.Register(layers.LayerTypeTCP, &capture.TCPHandler{})
+
 	c := capture.New(dev, dispatcher)
 	c.Start()
 }

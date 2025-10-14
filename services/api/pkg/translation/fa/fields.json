@@ -1,5 +1,7 @@
 {
   "fields.username": "نام کاربری",
   "fields.password": "رمز عبور",
-  "fields.email": "ایمیل"
+  "fields.email": "ایمیل",
+  "fields.page": "صفحه",
+  "fields.per_page": "تعداد موارد در صفحه"
 }

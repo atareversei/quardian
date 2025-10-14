@@ -1,0 +1,12 @@
+.ltr-input .mantine-TextInput-input {
+  direction: ltr;
+  text-align: left;
+
+  padding-inline-start: var(--input-padding-inline-end);
+  padding-inline-end: var(--input-padding-inline-start);
+}
+
+.english-font .mantine-TextInput-input {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    sans-serif;
+}

@@ -2,6 +2,7 @@ package httpserver
 
 import (
 	"fmt"
+	"github.com/atareversei/quardian/services/api/internal/delivery/httpserver/handlers/confighandler"
 	"path/filepath"
 
 	"github.com/atareversei/quardian/services/api/internal/config"
@@ -18,6 +19,7 @@ type Server struct {
 	Router              *echo.Echo
 	authHandler         authhandler.Handler
 	userHandler         userhandler.Handler
+	confHandler         confighandler.Handler
 	internalUserHandler internaluserhandler.Handler
 }
 
@@ -25,6 +27,7 @@ type Args struct {
 	Config              config.Config
 	AuthHandler         authhandler.Handler
 	UserHandler         userhandler.Handler
+	ConfHandler         confighandler.Handler
 	InternalUserHandler internaluserhandler.Handler
 }
 
@@ -34,6 +37,7 @@ func New(args Args) *Server {
 		Router:              echo.New(),
 		authHandler:         args.AuthHandler,
 		userHandler:         args.UserHandler,
+		confHandler:         args.ConfHandler,
 		internalUserHandler: args.InternalUserHandler,
 	}
 }
@@ -56,6 +60,7 @@ func (s *Server) Start() {
 
 	s.authHandler.SetRoutes(router)
 	s.userHandler.SetRoutes(router)
+	s.confHandler.SetupRoutes(router)
 	s.internalUserHandler.SetRoutes(router)
 
 	addr := fmt.Sprintf(":%d", s.cfg.HttpServer.Port)

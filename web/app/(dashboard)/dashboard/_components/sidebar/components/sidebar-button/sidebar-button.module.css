@@ -1,0 +1,89 @@
+.notification {
+  position: absolute;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity var(--animation-duration-xs) ease-in-out;
+}
+
+.button[data-expanded="false"] .notification {
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  opacity: 1;
+}
+
+.button {
+  position: relative;
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  grid-template-rows: 44px;
+  align-items: center;
+  justify-content: start;
+  border-radius: var(--mantine-radius-md);
+  gap: 12px;
+
+  padding: 0;
+  overflow: clip;
+
+  &[data-expanded="true"] {
+    inline-size: 100%;
+  }
+}
+
+.button:first-of-type {
+  margin-block-end: 12px;
+}
+
+.button::before {
+  position: absolute;
+  content: '';
+  inset: 0;
+
+  background-color: var(--mantine-color-white);
+  mix-blend-mode: soft-light;
+  opacity: 0;
+  transition: opacity var(--animation-duration-sm) ease-in-out;
+
+  z-index: 0;
+}
+
+.button:hover::before {
+  opacity: 0.3;
+}
+
+.active.button::before {
+  background-color: var(--mantine-color-primary-9);
+  opacity: 0.5;
+}
+
+.active.button:hover::before {
+  background-color: var(--mantine-color-primary-9);
+  opacity: 0.6;
+}
+
+.iconContainer {
+  position: relative;
+  z-index: 2;
+  block-size: 100%;
+
+  display: grid;
+  place-items: center;
+  transition: transform var(--animation-duration-sm) ease-in-out;
+
+  &[data-expanded="true"] {
+    transform: rotate(180deg);
+  }
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline-end: 10px;
+}
+
+.text {
+  position: relative;
+  z-index: 2;
+
+  white-space: nowrap;
+}

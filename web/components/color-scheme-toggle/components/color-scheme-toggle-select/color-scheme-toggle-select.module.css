@@ -1,0 +1,35 @@
+.light,
+.dark,
+.auto {
+  border-radius: var(--mantine-radius-md);
+  padding: 12px;
+  line-height: 1;
+  transition: background-color var(--animation-duration-sm) ease-in;
+}
+
+.light {
+  background-color: var(--mantine-color-white);
+  color: var(--mantine-color-black);
+
+  &:hover {
+    background-color: var(--mantine-color-gray-0);
+  }
+}
+
+.dark {
+  background-color: var(--mantine-color-dark-7);
+  color: var(--mantine-color-dark-0);
+
+  &:hover {
+    background-color: var(--mantine-color-dark-5);
+  }
+}
+
+.auto {
+  background-color: var(--mantine-color-body);
+  color: var(--mantine-color-text);
+
+  &:hover {
+    background-color: var(--mantine-color-default-hover);
+  }
+}

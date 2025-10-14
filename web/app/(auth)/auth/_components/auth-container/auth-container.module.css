@@ -1,0 +1,9 @@
+.container {
+  padding-block: 20px;
+  padding-inline: 44px;
+  inline-size: 100%;
+  min-inline-size: 600px;
+  max-inline-size: 700px;
+
+  block-size: 100%;
+}
